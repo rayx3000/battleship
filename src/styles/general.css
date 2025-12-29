@@ -1,3 +1,7 @@
+*{
+    font-family: "Anta", sans-serif;
+}
+
 body{
     background: #048269;
     background: -webkit-linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
