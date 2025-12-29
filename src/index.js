@@ -1,3 +1,8 @@
 import "./styles/general.css";
 
-console.log("Hello!");
+function hello(){
+    return "hello!";
+}
+
+const greet = hello();
+console.log(greet);
