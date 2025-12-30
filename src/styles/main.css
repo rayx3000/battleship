@@ -1,0 +1,73 @@
+main{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.board-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+
+.player-tag{
+    background: #007ce8;
+    background: radial-gradient(circle, rgba(0, 124, 232, 0.75) 0%, rgba(46, 200, 217, 1) 100%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 18vw;
+    padding: 2%;
+    border-radius: 35%;
+    gap: 15px;
+}
+
+.player-tag > div:first-child > img{
+    border-radius: 38%;
+}
+
+.player-tag > div:last-child > h3{
+    font-size: 1.5rem;
+    font-family: "Asimovian", sans-serif;
+}
+
+.player-tag > div:last-child  > p{
+    font-size: 1.12rem;
+}
+
+.player-tag > div:last-child > p > span:first-child{
+    font-weight: bold;
+}
+
+.player-tag > div:last-child > p > span:last-child{
+    font-family: "Iceberg", sans-serif;
+    font-size: 1.28rem;
+    font-weight: bold;
+    color:rgb(2, 35, 65)
+}
+
+
+.board{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 525px;
+    height: 525px;
+}
+
+.tile{
+    background-color: aqua;
+    border: 3px solid;
+}
+
+.game-turn{
+    background: #007ce8;
+    background: radial-gradient(circle, rgba(0, 124, 232, 0.75) 0%, rgba(46, 200, 217, 1) 100%);
+    padding: 2%;
+    border-radius: 32%;
+}
+
+.game-turn h3{
+    font-family: "Asimovian", sans-serif;
+    font-size: 1.35rem;
+}
