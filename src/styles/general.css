@@ -3,18 +3,18 @@
 }
 
 body{
-    background: #048269;
-    background: -webkit-linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
-    background: -moz-linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
-    background: linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#048269", endColorstr="#00D0D4", GradientType=0);
+    background: #053b39;
+    background: -webkit-linear-gradient(12deg, rgba(5, 59, 57, 1) 0%, rgba(5, 75, 82, 1) 35%, rgba(27, 133, 115, 1) 100%);
+    background: -moz-linear-gradient(12deg, rgba(5, 59, 57, 1) 0%, rgba(5, 75, 82, 1) 35%, rgba(27, 133, 115, 1) 100%);
+    background: linear-gradient(12deg, rgba(5, 59, 57, 1) 0%, rgba(5, 75, 82, 1) 35%, rgba(27, 133, 115, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#053B39", endColorstr="#1B8573", GradientType=0);
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
 
 .container{
-    padding: 6.5% 2% 8% 2%;
+    padding: 0.2% 2% 8% 2%;
     overflow: auto;
     max-height: 92vh;
 }

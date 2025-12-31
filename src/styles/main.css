@@ -49,15 +49,22 @@ main{
 
 
 .board{
+    background: #048269;
+    background: -webkit-linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
+    background: -moz-linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
+    background: linear-gradient(0deg, rgba(4, 130, 105, 1) 25%, rgba(0, 208, 212, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#048269", endColorstr="#00D0D4", GradientType=0);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     width: 525px;
     height: 525px;
+    padding: 3.5%;
+    border-radius: 7.5%;
 }
 
 .tile{
-    background-color: aqua;
-    border: 3px solid;
+    border: 3px solid #022921;
+    background: #3ff8fb;
+    background: radial-gradient(circle, rgba(63, 248, 251, 0.62) 0%, rgba(70, 158, 252, 0.88) 100%);
 }
 
 .game-turn{
@@ -65,6 +72,8 @@ main{
     background: radial-gradient(circle, rgba(0, 124, 232, 0.75) 0%, rgba(46, 200, 217, 1) 100%);
     padding: 2%;
     border-radius: 32%;
+    width: 5vw;
+    text-align: center;
 }
 
 .game-turn h3{
