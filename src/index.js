@@ -9,6 +9,13 @@ function hello(){
 const greet = hello();
 console.log(greet);
 
+const gameOptionsBtn = document.getElementById("game-options-btn");
+const gameOptions = document.querySelector(".game-options");
+const exitOption = document.getElementById("exit-option");
+
+gameOptionsBtn.addEventListener("click",  () => gameOptions.showModal());
+exitOption.addEventListener("click", () => gameOptions.close());
+
 const boards = document.querySelectorAll(".board");
 
 function createBoardGrid(){

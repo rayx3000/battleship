@@ -1,10 +1,105 @@
 header{
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 header h1{
-    color: rgb(3, 48, 55)
+    color: rgb(3, 48, 55);
+}
+
+header > button{
+    background: #149ab5;
+    background: radial-gradient(circle, rgba(17, 211, 250, 0.62) 0%, rgba(19, 114, 156, 0.88) 100%);
+    border: 1px solid rgb(3, 48, 55);
+    color:rgba(147, 223, 255, 1);
+    padding: 5px 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 1s ease-in cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+header > button:hover{
+    background: #33bbd6;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+header > button:active{
+    background: #64cce0;
+    transform: scale(0.92);
+} 
+
+.game-options{
+    position: relative;
+    padding: 2%;
+    background: #007ce8;
+    background: radial-gradient(circle, rgba(0, 124, 232, 0.75) 0%, rgba(46, 200, 217, 1) 100%);
+}
+
+.game-options > div{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.game-options > div > button{
+    width: 21vw;
+    border: none;
+    cursor: pointer;
+    padding: 1.2%;
+    border-radius: 21%;
+}
+
+.game-options > div > button:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.game-options > div > button:active{
+    transform: scale(0.965);
+}
+
+#restart-game{
+    background: #0dff82;
+    background: radial-gradient(circle, rgba(13, 255, 130, 0.75) 0%, rgba(7, 224, 173, 1) 100%);
+}
+
+#menu{
+    background: #ffaa0d;
+    background: radial-gradient(circle, rgba(255, 170, 13, 0.75) 0%, rgba(224, 206, 7, 1) 100%);
+}
+
+#restart-game:hover{
+    background: #3ee48e;
+}
+
+#menu:hover{
+    background: #f7c363;
+}
+
+#restart-game:active{
+    background: #67f5ac;
+}
+
+#menu:active{
+    background: #ffd17b;
+}
+
+#exit-option{
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    top: 1px;
+    right: 20px;
+    cursor: pointer;
+    width: 1vw;
+    color: rgb(255, 53, 53);
+}
+
+#exit-option:hover{
+    color: rgb(255, 78, 78);
+}
+
+#exit-option:active{
+    color: rgb(255, 102, 102);
+    transform: scale(0.92);
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./styles/general.css">
     <link rel="stylesheet" href="./styles/header.css">
     <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anta&family=Asimovian&family=Bruno+Ace&family=Iceberg&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Tektur:wght@400..900&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
@@ -15,6 +16,14 @@
     <div class="container">
         <header>
             <h1>Piratestrike: Battleship Gangsta</h1>
+            <button id="game-options-btn"><span class="material-symbols-outlined">menu</span></button>
+            <dialog class="game-options">
+                <div>
+                    <button id="exit-option"><span class="material-symbols-outlined">close</span></button>
+                    <button id="restart-game">Restart Game</button>
+                    <button id="menu">Menu</button>
+                </div>
+            </dialog>
         </header>
         <main>
             <div class="board-container">
@@ -27,8 +36,7 @@
                         <p><span>Ships Alive: </span><span id="player1-ships">10</span></p>
                     </div>
                 </div>
-                <div class="board">
-                </div>
+                <div class="board"></div>
             </div>
             <div class="game-turn">
                 <h3>Player's Turn</h3>
@@ -43,8 +51,7 @@
                         <p><span>Ships Alive: </span><span id="player2-ships">10</span></p>
                     </div>
                 </div>
-                <div class="board">
-                </div>
+                <div class="board"></div>
             </div>
         </main>
     </div>
