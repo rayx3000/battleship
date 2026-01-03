@@ -1,0 +1,28 @@
+.ship-dock {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ship {
+    border: 1px solid black;
+    cursor: grab;
+    background-color: aquamarine;
+}
+
+.ship[data-length="5"] { width: 125px; height: 25px; background-color: #aaa; }
+.ship[data-length="4"] { width: 100px; height: 25px; background-color: #bbb; }
+.ship[data-length="3"] { width: 75px; height: 25px; background-color: #ccc; }
+.ship[data-length="2"] { width: 50px; height: 25px; background-color: #ddd; }
+
+.ship.dragging {
+    opacity: 0.5;
+}
+
+.ship.horizontal {
+    /* default */
+}
+
+.ship.vertical {
+    /* we will swap width and height */
+}

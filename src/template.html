@@ -36,10 +36,21 @@
                         <p><span>Ships Alive: </span><span id="player1-ships">10</span></p>
                     </div>
                 </div>
-                <div class="board"></div>
+                <div class="board" id="player-board"></div>
+                <div class="ship-dock">
+                    <div class="ship" data-length="5" draggable="true"></div>
+                    <div class="ship" data-length="4" draggable="true"></div>
+                    <div class="ship" data-length="3" draggable="true"></div>
+                    <div class="ship" data-length="3" draggable="true"></div>
+                    <div class="ship" data-length="2" draggable="true"></div>
+                </div>
             </div>
             <div class="game-turn">
+                <button id="rotate-ship-btn">Rotate</button>
+                <button id="randomize-ships-btn">Randomize Ships</button>
+                <button id="start-game-btn" style="display: none;">Start Game</button>
                 <h3>Player's Turn</h3>
+                <button id="play-again-btn" style="display: none;">Play Again</button>
             </div>
             <div class="board-container">
                 <div class="player-tag">
@@ -51,7 +62,7 @@
                         <p><span>Ships Alive: </span><span id="player2-ships">10</span></p>
                     </div>
                 </div>
-                <div class="board"></div>
+                <div class="board" id="computer-board"></div>
             </div>
         </main>
     </div>

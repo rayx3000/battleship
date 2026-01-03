@@ -59,12 +59,26 @@ main{
     height: 525px;
     padding: 3.5%;
     border-radius: 7.5%;
+    grid-template-columns: repeat(10, 1fr);
+
 }
 
-.tile{
-    border: 3px solid #022921;
+.cell{
+    border: 1px solid #022921;
     background: #3ff8fb;
     background: radial-gradient(circle, rgba(63, 248, 251, 0.62) 0%, rgba(70, 158, 252, 0.88) 100%);
+}
+
+.cell.ship {
+    background-color: #a9a9a9; /* DarkGray */
+}
+
+.cell.miss {
+    background-color: #808080; /* Gray */
+}
+
+.cell.hit {
+    background-color: #ff0000; /* Red */
 }
 
 .game-turn{
