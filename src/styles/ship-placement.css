@@ -20,9 +20,6 @@
 }
 
 .ship.horizontal {
-    /* default */
+    background: rgb(7, 131, 131);
 }
 
-.ship.vertical {
-    /* we will swap width and height */
-}

@@ -1,0 +1,48 @@
+.game-modes{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20vw;
+    margin-top: 18vh;
+}
+
+.game-modes > button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5%;
+    width: 200px;
+    height: 200px;
+    gap: 10px;
+    border-radius: 55px;
+    border: none;
+    background: #12dea4;
+    background: radial-gradient(circle, rgba(18, 222, 164, 0.65) 0%, rgba(0, 156, 145, 1) 100%);
+    color: #88f0ea;
+    cursor: pointer;
+}
+
+.game-modes > button:hover{
+    transform: scale(1.02);
+    color: #f0f0f0;
+    background: #32fcc3;
+    background: radial-gradient(circle, rgba(50, 252, 195, 0.65) 0%, rgba(24, 204, 192, 1) 100%);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.game-modes > button:active{
+    transform: scale(0.975);
+    background: #63e6c0;
+    background: radial-gradient(circle, rgba(99, 230, 192, 0.55) 0%, rgba(60, 230, 218, 1) 100%);
+}
+
+.game-modes > button > span:first-child{
+    font-size: 3.5em;
+}
+
+.game-modes > button > span:last-child{
+    font-size: 1.5em;
+    font-weight: bold;
+}
