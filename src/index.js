@@ -4,19 +4,6 @@ import './styles/main.css';
 import './styles/main-menu.css';
 import { initGame, addControlListeners } from './game.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    initGame();
-    addControlListeners();
-});
-
-
-const gameMenuHTML = `
-    <div class="game-modes">
-        <button><span class="material-symbols-outlined">group</span><span>Player Vs Player</span></button>
-        <button><span class="material-symbols-outlined">robot_2</span><span>Player Vs Computer</span></button>
-    </div>
-`
-
 const gameHTML = `
     <div class="board-container">
                 <div class="player-tag">
@@ -56,4 +43,22 @@ const gameHTML = `
                 </div>
                 <div class="board" id="computer-board"></div>
             </div>
-`
+`;
+
+document.addEventListener('DOMContentLoaded', () => {
+    const main = document.querySelector('main');
+    const playerVsComputer = document.getElementById('player-vs-computer');
+    const playerVsPlayer = document.getElementById('player-vs-player');
+    
+    playerVsComputer.addEventListener('click', () => {
+        main.innerHTML = gameHTML;
+        initGame();
+        addControlListeners();
+    });
+
+    playerVsPlayer.addEventListener('click', () => {
+        main.innerHTML = gameHTML;
+        initGame();
+        addControlListeners();
+    });
+});
