@@ -3,12 +3,19 @@ import './styles/header.css';
 import './styles/main.css';
 import './styles/main-menu.css';
 import { initGame, addControlListeners } from './game.js';
+import player1 from './assets/playericon1.png';
+import player2 from './assets/playericon2.png';
+
+const gameMenuHTML = `<div class="game-modes">
+                <button id="player-vs-player"><span class="material-symbols-outlined">group</span><span>Player Vs Player</span></button>
+                <button id="player-vs-computer"><span class="material-symbols-outlined">robot_2</span><span>Player Vs Computer</span></button>
+            </div>`;
 
 const gameHTML = `
     <div class="board-container">
                 <div class="player-tag">
                     <div class="player1-icon">
-                        <img width="80px" height="80px" src="assets/playericon1.png">
+                        <img width="80px" height="80px" src="${player1}">
                     </div>
                     <div class="player1-details">
                         <h3 id="player1-name">Player</h3>
@@ -34,7 +41,7 @@ const gameHTML = `
             <div class="board-container">
                 <div class="player-tag">
                     <div class="player2-icon">
-                        <img width="80px" height="80px" src="assets/playericon2.png">
+                        <img width="80px" height="80px" src="${player2}">
                     </div>
                     <div class="player2-details">
                         <h3 id="player2-name">Computer</h3>
@@ -46,19 +53,46 @@ const gameHTML = `
 `;
 
 document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
     const main = document.querySelector('main');
-    const playerVsComputer = document.getElementById('player-vs-computer');
-    const playerVsPlayer = document.getElementById('player-vs-player');
-    
-    playerVsComputer.addEventListener('click', () => {
-        main.innerHTML = gameHTML;
-        initGame();
-        addControlListeners();
-    });
+    const gameOptionsBtn = document.getElementById('game-options-btn');
+    const gameOptions = document.querySelector(".game-options");
+    const goToMainMenu = document.getElementById("menu");
 
-    playerVsPlayer.addEventListener('click', () => {
+    const playerVsComputer = () => {
         main.innerHTML = gameHTML;
         initGame();
         addControlListeners();
-    });
+        gameOptionsBtn.style.display = 'inline-block';
+        header.style.justifyContent = 'space-between';
+    };
+
+    const playerVsPlayer =  () => {
+        main.innerHTML = gameHTML;
+        initGame();
+        addControlListeners();
+        gameOptionsBtn.style.display = 'inline-block';
+        header.style.justifyContent = 'space-between';
+    };
+    
+
+    document.addEventListener("click", (e) => {
+        if(e.target.id === "player-vs-computer"){
+            playerVsComputer();
+        }
+
+        if(e.target.id === "player-vs-player"){
+            playerVsPlayer()
+        }
+    })
+
+    gameOptionsBtn.addEventListener('click', () => gameOptions.showModal());
+    document.getElementById("exit-option").addEventListener('click', () => gameOptions.close());
+
+    goToMainMenu.addEventListener("click", () => {
+        main.innerHTML = gameMenuHTML;
+        gameOptionsBtn.style.display = 'none';
+        header.style.justifyContent = 'center';
+        gameOptions.close();
+    })
 });
