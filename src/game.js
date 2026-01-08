@@ -72,6 +72,7 @@ const gameLoop = (row, col) => {
 };
 
 const startGame = () => {
+    document.querySelector('.computer-board').classList.remove('hidden');
     document.getElementById('randomize-ships-btn').style.display = 'none';
     document.getElementById('start-game-btn').style.display = 'none';
     const turnHeader = document.querySelector('.game-turn h3');
@@ -82,6 +83,7 @@ const startGame = () => {
 };
 
 const initGame = () => {
+    document.querySelector('.computer-board').classList.add('hidden');
     gameOver = false;
     document.querySelector('.game-turn h3').style.display = 'none';
     document.getElementById('play-again-btn').style.display = 'none';

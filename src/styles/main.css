@@ -95,3 +95,7 @@ main{
     font-family: "Asimovian", sans-serif;
     font-size: 1.35rem;
 }
+
+.hidden {
+    display: none;
+}
