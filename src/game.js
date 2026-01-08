@@ -35,7 +35,6 @@ const checkWinner = () => {
         
         document.getElementById('play-again-btn').style.display = 'block';
         
-        // Disable further attacks
         const computerBoard = document.getElementById('computer-board');
         const newBoard = computerBoard.cloneNode(true);
         computerBoard.parentNode.replaceChild(newBoard, computerBoard);
@@ -45,7 +44,6 @@ const checkWinner = () => {
 const gameLoop = (row, col) => {
     if (gameOver) return;
 
-    // Player's turn
     try {
         const pRow = parseInt(row);
         const pCol = parseInt(col);
@@ -57,7 +55,6 @@ const gameLoop = (row, col) => {
 
         document.querySelector('.game-turn h3').textContent = "Computer's Turn";
 
-        // Computer's turn
         setTimeout(() => {
             if (gameOver) return;
             const attackResult = computer.randomAttack(player.gameboard);
@@ -68,7 +65,7 @@ const gameLoop = (row, col) => {
             }
         }, 1000);
     } catch (error) {
-        console.warn(error.message); // From receiveAttack if already attacked
+        console.warn(error.message);
     }
 };
 

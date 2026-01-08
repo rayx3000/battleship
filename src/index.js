@@ -12,23 +12,23 @@ const gameMenuHTML = `<div class="game-modes">
             </div>`;
 
 const gameHTML = `
-    <div class="board-container">
-                <div class="player-tag">
-                    <div class="player1-icon">
-                        <img width="80px" height="80px" src="${player1}">
-                    </div>
-                    <div class="player1-details">
-                        <h3 id="player1-name">Player</h3>
-                        <p><span>Ships Alive: </span><span id="player1-ships">10</span></p>
-                    </div>
+    <div class="board-container player-board">
+            <div class="player-tag">
+                <div class="player1-icon">
+                    <img width="80px" height="80px" src="${player1}">
                 </div>
-                <div class="board" id="player-board"></div>
-                <div class="ship-dock">
-                    <div class="ship" data-length="5" draggable="true"></div>
-                    <div class="ship" data-length="4" draggable="true"></div>
-                    <div class="ship" data-length="3" draggable="true"></div>
-                    <div class="ship" data-length="3" draggable="true"></div>
-                    <div class="ship" data-length="2" draggable="true"></div>
+                <div class="player1-details">
+                    <h3 id="player1-name">Player</h3>
+                    <p><span>Ships Alive: </span><span id="player1-ships">10</span></p>
+                </div>
+            </div>
+            <div class="board" id="player-board"></div>
+            <div class="ship-dock">
+                <div class="ship" data-length="5" draggable="true"></div>
+                <div class="ship" data-length="4" draggable="true"></div>
+                <div class="ship" data-length="3" draggable="true"></div>
+                <div class="ship" data-length="3" draggable="true"></div>
+                <div class="ship" data-length="2" draggable="true"></div>
                 </div>
             </div>
             <div class="game-turn">
@@ -38,7 +38,7 @@ const gameHTML = `
                 <h3>Player's Turn</h3>
                 <button id="play-again-btn" style="display: none;">Play Again</button>
             </div>
-            <div class="board-container">
+            <div class="board-container computer-board">
                 <div class="player-tag">
                     <div class="player2-icon">
                         <img width="80px" height="80px" src="${player2}">
@@ -77,11 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     document.addEventListener("click", (e) => {
-        if(e.target.id === "player-vs-computer"){
+        if(e.target.closest("#player-vs-computer")){
             playerVsComputer();
         }
 
-        if(e.target.id === "player-vs-player"){
+        if(e.target.closest("#player-vs-player")){
             playerVsPlayer()
         }
     })
