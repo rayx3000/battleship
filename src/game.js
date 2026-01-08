@@ -1,7 +1,7 @@
 import Player from './logic/Player.js';
 import ComputerPlayer from './logic/ComputerPlayer.js';
 import Ship from './logic/Ship.js';
-import { renderBoard, addAttackListener, updateCell } from './dom.js';
+import { renderBoard, addAttackListener, updateCell, updateShipsAlive } from './dom.js';
 
 const player = Player('Player');
 const computer = ComputerPlayer();
@@ -26,6 +26,8 @@ function randomlyPlaceShips(gameboard) {
 const checkWinner = () => {
     const playerWon = computer.gameboard.allShipsSunk();
     const computerWon = player.gameboard.allShipsSunk();
+
+    updateShipsAlive(player, computer);
 
     if (playerWon || computerWon) {
         gameOver = true;
@@ -91,6 +93,8 @@ const initGame = () => {
     renderBoard(player.gameboard, 'player-board', true);
     renderBoard(computer.gameboard, 'computer-board', false);
     
+    updateShipsAlive(player, computer);
+
     document.getElementById('start-game-btn').style.display = 'block';
 };
 

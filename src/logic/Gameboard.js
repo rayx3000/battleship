@@ -64,6 +64,8 @@ const Gameboard = () => {
 
   const getAttackedCoords = () => attackedCoords;
 
+  const getShips = () => ships;
+
   return {
     getBoard,
     placeShip,
@@ -72,6 +74,7 @@ const Gameboard = () => {
     allShipsSunk,
     reset,
     getAttackedCoords,
+    getShips,
   };
 };
 

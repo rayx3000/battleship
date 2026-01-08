@@ -57,5 +57,13 @@ const addAttackListener = (callback) => {
     });
 };
 
+const updateShipsAlive = (player, computer) => {
+    const playerShipsAlive = player.gameboard.getShips().filter(ship => !ship.isSunk()).length;
+    const computerShipsAlive = computer.gameboard.getShips().filter(ship => !ship.isSunk()).length;
 
-export { renderBoard, addAttackListener, updateCell };
+    document.getElementById('player1-ships').textContent = playerShipsAlive;
+    document.getElementById('player2-ships').textContent = computerShipsAlive;
+};
+
+
+export { renderBoard, addAttackListener, updateCell, updateShipsAlive };

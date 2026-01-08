@@ -19,7 +19,7 @@ const gameHTML = `
                 </div>
                 <div class="player1-details">
                     <h3 id="player1-name">Player</h3>
-                    <p><span>Ships Alive: </span><span id="player1-ships">10</span></p>
+                    <p><span>Ships Alive: </span><span id="player1-ships">5</span></p>
                 </div>
             </div>
             <div class="board" id="player-board"></div>
@@ -45,7 +45,7 @@ const gameHTML = `
                     </div>
                     <div class="player2-details">
                         <h3 id="player2-name">Computer</h3>
-                        <p><span>Ships Alive: </span><span id="player2-ships">10</span></p>
+                        <p><span>Ships Alive: </span><span id="player2-ships">5</span></p>
                     </div>
                 </div>
                 <div class="board" id="computer-board"></div>
