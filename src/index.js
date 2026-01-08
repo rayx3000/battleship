@@ -38,7 +38,7 @@ const gameHTML = `
                 <h3>Player's Turn</h3>
                 <button id="play-again-btn" style="display: none;">Play Again</button>
             </div>
-            <div class="board-container computer-board">
+            <div class="board-container player2-board">
                 <div class="player-tag">
                     <div class="player2-icon">
                         <img width="80px" height="80px" src="${player2}">
@@ -48,7 +48,7 @@ const gameHTML = `
                         <p><span>Ships Alive: </span><span id="player2-ships">5</span></p>
                     </div>
                 </div>
-                <div class="board" id="computer-board"></div>
+                <div class="board" id="player2-board"></div>
             </div>
 `;
 
@@ -61,16 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const playerVsComputer = () => {
         main.innerHTML = gameHTML;
-        initGame();
-        addControlListeners();
+        document.getElementById('player2-name').textContent = 'Computer';
+        initGame('pvc');
+        addControlListeners('pvc');
         gameOptionsBtn.style.display = 'inline-block';
         header.style.justifyContent = 'space-between';
     };
 
     const playerVsPlayer =  () => {
         main.innerHTML = gameHTML;
-        initGame();
-        addControlListeners();
+        document.getElementById('player1-name').textContent = 'Player 1';
+        document.getElementById('player2-name').textContent = 'Player 2';
+        initGame('pvp');
+        addControlListeners('pvp');
         gameOptionsBtn.style.display = 'inline-block';
         header.style.justifyContent = 'space-between';
     };

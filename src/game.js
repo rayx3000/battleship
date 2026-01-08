@@ -3,9 +3,11 @@ import ComputerPlayer from './logic/ComputerPlayer.js';
 import Ship from './logic/Ship.js';
 import { renderBoard, addAttackListener, updateCell, updateShipsAlive } from './dom.js';
 
-const player = Player('Player');
-const computer = ComputerPlayer();
+let player1;
+let player2;
+let currentPlayer;
 let gameOver = false;
+let gameMode;
 
 const SHIP_LENGTHS = [5, 4, 3, 3, 2];
 
@@ -24,33 +26,82 @@ function randomlyPlaceShips(gameboard) {
 }
 
 const checkWinner = () => {
-    const playerWon = computer.gameboard.allShipsSunk();
-    const computerWon = player.gameboard.allShipsSunk();
+    const player1Won = player2.gameboard.allShipsSunk();
+    const player2Won = player1.gameboard.allShipsSunk();
 
-    updateShipsAlive(player, computer);
+    updateShipsAlive(player1, player2);
 
-    if (playerWon || computerWon) {
+    if (player1Won || player2Won) {
         gameOver = true;
-        const winnerMessage = playerWon ? 'You win!' : 'Computer wins!';
+        let winnerMessage;
+        if (gameMode === 'pvc') {
+            winnerMessage = player1Won ? 'You win!' : 'Computer wins!';
+        } else {
+            winnerMessage = player1Won ? 'Player 1 wins!' : 'Player 2 wins!';
+        }
         const turnHeader = document.querySelector('.game-turn h3');
         turnHeader.textContent = winnerMessage;
         
         document.getElementById('play-again-btn').style.display = 'block';
         
-        const computerBoard = document.getElementById('computer-board');
-        const newBoard = computerBoard.cloneNode(true);
-        computerBoard.parentNode.replaceChild(newBoard, computerBoard);
+        const opponentBoardId = (currentPlayer === player1) ? 'player2-board' : 'player-board';
+        const opponentBoard = document.getElementById(opponentBoardId);
+        if (opponentBoard) {
+            const newBoard = opponentBoard.cloneNode(true);
+            opponentBoard.parentNode.replaceChild(newBoard, opponentBoard);
+        }
     }
 }
 
-const gameLoop = (row, col) => {
+const switchTurn = () => {
+    currentPlayer = (currentPlayer === player1) ? player2 : player1;
+    const turnHeader = document.querySelector('.game-turn h3');
+    if (gameMode === 'pvc') {
+        turnHeader.textContent = (currentPlayer === player1) ? "Player's Turn" : "Computer's Turn";
+    } else {
+        turnHeader.textContent = (currentPlayer === player1) ? "Player 1's Turn" : "Player 2's Turn";
+        if (currentPlayer === player1) {
+            renderBoard(player1.gameboard, 'player-board', true);
+            renderBoard(player2.gameboard, 'player2-board', false);
+        } else {
+            renderBoard(player1.gameboard, 'player-board', false);
+            renderBoard(player2.gameboard, 'player2-board', true);
+        }
+    }
+}
+
+const gameLoopPvp = (row, col) => {
     if (gameOver) return;
 
     try {
         const pRow = parseInt(row);
         const pCol = parseInt(col);
-        player.attack(computer.gameboard, pRow, pCol);
-        updateCell(computer.gameboard, 'computer-board', pRow, pCol);
+
+        const opponent = (currentPlayer === player1) ? player2 : player1;
+        const opponentBoardId = (currentPlayer === player1) ? 'player2-board' : 'player-board';
+
+        currentPlayer.attack(opponent.gameboard, pRow, pCol);
+        updateCell(opponent.gameboard, opponentBoardId, pRow, pCol);
+        checkWinner();
+
+        if (!gameOver) {
+            switchTurn();
+            const nextOpponentBoardId = (currentPlayer === player1) ? 'player2-board' : 'player-board';
+            addAttackListener(gameLoopPvp, nextOpponentBoardId);
+        }
+    } catch (error) {
+        console.warn(error.message);
+    }
+}
+
+const gameLoopPvc = (row, col) => {
+    if (gameOver) return;
+
+    try {
+        const pRow = parseInt(row);
+        const pCol = parseInt(col);
+        player1.attack(player2.gameboard, pRow, pCol);
+        updateCell(player2.gameboard, 'player2-board', pRow, pCol);
         checkWinner();
 
         if (gameOver) return;
@@ -59,8 +110,8 @@ const gameLoop = (row, col) => {
 
         setTimeout(() => {
             if (gameOver) return;
-            const attackResult = computer.randomAttack(player.gameboard);
-            updateCell(player.gameboard, 'player-board', attackResult.row, attackResult.col);
+            const attackResult = player2.randomAttack(player1.gameboard);
+            updateCell(player1.gameboard, 'player-board', attackResult.row, attackResult.col);
             checkWinner();
             if (!gameOver) {
                 document.querySelector('.game-turn h3').textContent = "Player's Turn";
@@ -72,45 +123,77 @@ const gameLoop = (row, col) => {
 };
 
 const startGame = () => {
-    document.querySelector('.computer-board').classList.remove('hidden');
+    document.querySelector('.player2-board').classList.remove('hidden');
     document.getElementById('randomize-ships-btn').style.display = 'none';
     document.getElementById('start-game-btn').style.display = 'none';
     const turnHeader = document.querySelector('.game-turn h3');
-    turnHeader.textContent = "Player's Turn";
     turnHeader.style.display = 'block';
 
-    addAttackListener(gameLoop);
+    if (gameMode === 'pvc') {
+        turnHeader.textContent = "Player's Turn";
+        addAttackListener(gameLoopPvc, 'player2-board');
+    } else {
+        turnHeader.textContent = "Player 1's Turn";
+        renderBoard(player1.gameboard, 'player-board', true);
+        renderBoard(player2.gameboard, 'player2-board', false);
+        addAttackListener(gameLoopPvp, 'player2-board');
+    }
 };
 
-const initGame = () => {
-    document.querySelector('.computer-board').classList.add('hidden');
+const initGame = (mode) => {
+    gameMode = mode;
     gameOver = false;
+    
+    player1 = Player('Player 1');
+    if (gameMode === 'pvc') {
+        player2 = ComputerPlayer();
+    } else { // pvp
+        player2 = Player('Player 2');
+    }
+    currentPlayer = player1;
+
+    document.querySelector('.player2-board').classList.add('hidden');
     document.querySelector('.game-turn h3').style.display = 'none';
     document.getElementById('play-again-btn').style.display = 'none';
     document.getElementById('randomize-ships-btn').style.display = 'block';
     
-    randomlyPlaceShips(player.gameboard);
-    randomlyPlaceShips(computer.gameboard);
+    randomlyPlaceShips(player1.gameboard);
+    randomlyPlaceShips(player2.gameboard);
 
-    renderBoard(player.gameboard, 'player-board', true);
-    renderBoard(computer.gameboard, 'computer-board', false);
+    renderBoard(player1.gameboard, 'player-board', true);
+    renderBoard(player2.gameboard, 'player2-board', true); // show ships for placement phase
     
-    updateShipsAlive(player, computer);
+    updateShipsAlive(player1, player2);
 
     document.getElementById('start-game-btn').style.display = 'block';
 };
 
-const addControlListeners = () => {
-    document.getElementById('randomize-ships-btn').addEventListener('click', () => {
+const addControlListeners = (mode) => {
+    const randomizeBtn = document.getElementById('randomize-ships-btn');
+    const newRandomizeBtn = randomizeBtn.cloneNode(true);
+    randomizeBtn.parentNode.replaceChild(newRandomizeBtn, randomizeBtn);
+    newRandomizeBtn.addEventListener('click', () => {
         if (gameOver) return;
-        randomlyPlaceShips(player.gameboard);
-        renderBoard(player.gameboard, 'player-board', true);
+        randomlyPlaceShips(player1.gameboard);
+        renderBoard(player1.gameboard, 'player-board', true);
     });
 
-    document.getElementById('start-game-btn').addEventListener('click', startGame);
+    const startBtn = document.getElementById('start-game-btn');
+    const newStartBtn = startBtn.cloneNode(true);
+    startBtn.parentNode.replaceChild(newStartBtn, startBtn);
+    newStartBtn.addEventListener('click', startGame);
 
-    document.getElementById('play-again-btn').addEventListener('click', () => {
-        initGame();
+    const playAgainBtn = document.getElementById('play-again-btn');
+    const newPlayAgainBtn = playAgainBtn.cloneNode(true);
+    playAgainBtn.parentNode.replaceChild(newPlayAgainBtn, playAgainBtn);
+    newPlayAgainBtn.addEventListener('click', () => {
+        if(mode === 'pvc') {
+            document.getElementById('player2-name').textContent = 'Computer';
+        } else {
+            document.getElementById('player1-name').textContent = 'Player 1';
+            document.getElementById('player2-name').textContent = 'Player 2';
+        }
+        initGame(mode);
     });
 };
 

@@ -46,9 +46,15 @@ const updateCell = (gameboard, boardElementId, row, col) => {
     }
 };
 
-const addAttackListener = (callback) => {
-    const computerBoard = document.getElementById('computer-board');
-    computerBoard.addEventListener('click', (e) => {
+const addAttackListener = (callback, boardId) => {
+    const board = document.getElementById(boardId);
+    if (!board) return;
+
+    // Clone and replace to remove old listeners
+    const newBoard = board.cloneNode(true);
+    board.parentNode.replaceChild(newBoard, board);
+
+    newBoard.addEventListener('click', (e) => {
         if (e.target.classList.contains('cell') && !e.target.classList.contains('hit') && !e.target.classList.contains('miss')) {
             const row = e.target.dataset.row;
             const col = e.target.dataset.col;
@@ -57,12 +63,12 @@ const addAttackListener = (callback) => {
     });
 };
 
-const updateShipsAlive = (player, computer) => {
-    const playerShipsAlive = player.gameboard.getShips().filter(ship => !ship.isSunk()).length;
-    const computerShipsAlive = computer.gameboard.getShips().filter(ship => !ship.isSunk()).length;
+const updateShipsAlive = (player1, player2) => {
+    const player1ShipsAlive = player1.gameboard.getShips().filter(ship => !ship.isSunk()).length;
+    const player2ShipsAlive = player2.gameboard.getShips().filter(ship => !ship.isSunk()).length;
 
-    document.getElementById('player1-ships').textContent = playerShipsAlive;
-    document.getElementById('player2-ships').textContent = computerShipsAlive;
+    document.getElementById('player1-ships').textContent = player1ShipsAlive;
+    document.getElementById('player2-ships').textContent = player2ShipsAlive;
 };
 
 
