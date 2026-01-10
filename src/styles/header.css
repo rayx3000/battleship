@@ -1,6 +1,7 @@
 header{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 header h1{
@@ -102,4 +103,12 @@ header > button:active{
 #exit-option:active{
     color: rgb(255, 102, 102);
     transform: scale(0.92);
+}
+
+.visible-inline-block {
+    display: inline-block !important;
+}
+
+.center-content {
+    justify-content: center !important;
 }

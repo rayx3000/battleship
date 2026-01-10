@@ -23,20 +23,13 @@ const gameHTML = `
                 </div>
             </div>
             <div class="board" id="player-board"></div>
-            <div class="ship-dock">
-                <div class="ship" data-length="5" draggable="true"></div>
-                <div class="ship" data-length="4" draggable="true"></div>
-                <div class="ship" data-length="3" draggable="true"></div>
-                <div class="ship" data-length="3" draggable="true"></div>
-                <div class="ship" data-length="2" draggable="true"></div>
-                </div>
-            </div>
+        </div>
             <div class="game-turn">
                 <button id="rotate-ship-btn">Rotate</button>
                 <button id="randomize-ships-btn">Randomize Ships</button>
-                <button id="start-game-btn" style="display: none;">Start Game</button>
+                <button id="start-game-btn" class="hidden">Start Game</button>
                 <h3>Player's Turn</h3>
-                <button id="play-again-btn" style="display: none;">Play Again</button>
+                <button id="play-again-btn" class="hidden">Play Again</button>
             </div>
             <div class="board-container player2-board">
                 <div class="player-tag">
@@ -64,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('player2-name').textContent = 'Computer';
         initGame('pvc');
         addControlListeners('pvc');
-        gameOptionsBtn.style.display = 'inline-block';
-        header.style.justifyContent = 'space-between';
+        gameOptionsBtn.classList.add('visible-inline-block');
+        header.classList.remove('center-content');
     };
 
     const playerVsPlayer =  () => {
@@ -74,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('player2-name').textContent = 'Player 2';
         initGame('pvp');
         addControlListeners('pvp');
-        gameOptionsBtn.style.display = 'inline-block';
-        header.style.justifyContent = 'space-between';
+        gameOptionsBtn.classList.add('visible-inline-block');
+        header.classList.remove('center-content');
     };
     
 
@@ -94,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     goToMainMenu.addEventListener("click", () => {
         main.innerHTML = gameMenuHTML;
-        gameOptionsBtn.style.display = 'none';
-        header.style.justifyContent = 'center';
+        gameOptionsBtn.classList.remove('visible-inline-block');
+        header.classList.add('center-content');
         gameOptions.close();
     })
 });

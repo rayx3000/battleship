@@ -72,4 +72,41 @@ const updateShipsAlive = (player1, player2) => {
 };
 
 
-export { renderBoard, addAttackListener, updateCell, updateShipsAlive };
+export { renderBoard, addAttackListener, updateCell, updateShipsAlive, addDragAndDropListeners };
+
+function addDragAndDropListeners(placeShipCallback) {
+  const ships = document.querySelectorAll('.ship-dock .ship');
+  const boardCells = document.querySelectorAll('#player-board .cell');
+
+  ships.forEach(ship => {
+    ship.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', JSON.stringify({
+        length: ship.dataset.length,
+        isVertical: ship.classList.contains('vertical'),
+        id: ship.id
+      }));
+      setTimeout(() => {
+        ship.classList.add('dragging');
+      }, 0);
+    });
+
+    ship.addEventListener('dragend', () => {
+      ship.classList.remove('dragging');
+    });
+  });
+
+  boardCells.forEach(cell => {
+    cell.addEventListener('dragover', (e) => {
+      e.preventDefault(); // Allow dropping
+    });
+
+    cell.addEventListener('drop', (e) => {
+      e.preventDefault();
+      const shipData = JSON.parse(e.dataTransfer.getData('text/plain'));
+      const row = parseInt(cell.dataset.row);
+      const col = parseInt(cell.dataset.col);
+
+      placeShipCallback(shipData.length, row, col, shipData.isVertical, shipData.id);
+    });
+  });
+}
