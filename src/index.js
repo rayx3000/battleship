@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('player2-name').textContent = 'Computer';
         initGame('pvc');
         addControlListeners('pvc');
-        gameOptionsBtn.classList.add('visible-inline-block');
-        header.classList.remove('center-content');
     };
 
     const playerVsPlayer =  () => {
@@ -66,8 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('player2-name').textContent = 'Player 2';
         initGame('pvp');
         addControlListeners('pvp');
-        gameOptionsBtn.classList.add('visible-inline-block');
-        header.classList.remove('center-content');
     };
     
 

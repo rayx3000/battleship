@@ -161,6 +161,11 @@ const startGame = () => {
     const turnHeader = document.querySelector('.game-turn h3');
     turnHeader.classList.remove('hidden');
 
+    const gameOptionsBtn = document.getElementById('game-options-btn');
+    gameOptionsBtn.classList.add('visible-inline-block');
+    const header = document.querySelector('header');
+    header.classList.remove('center-content');
+
     if (gameMode === 'pvc') {
         updateShipsAlive(player1, player2);
         renderBoard(player2.gameboard, 'player2-board', false);
