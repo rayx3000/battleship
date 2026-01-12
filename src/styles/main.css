@@ -92,6 +92,27 @@ main{
     text-align: center;
 }
 
+.game-turn button{
+    background-color: #048269;
+    border: none;
+    border-radius: 12%;
+    padding: 8%;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transform: all 0.3s ease;
+}
+
+.game-turn button:hover{
+    background-color: #0d9799;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: scale(1.02);
+}
+
+.game-turn button:active{
+    transform: scale(0.98);
+    background-color: #36c7e0;
+}
+
 .game-turn h3{
     font-family: "Asimovian", sans-serif;
     font-size: 1.35rem;
