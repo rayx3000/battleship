@@ -50,12 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameOptionsBtn = document.getElementById('game-options-btn');
     const gameOptions = document.querySelector(".game-options");
     const goToMainMenu = document.getElementById("menu");
+    const restartGame = document.getElementById("restart-game");
+
+    let currentGameMode = null;
 
     const playerVsComputer = () => {
         main.innerHTML = gameHTML;
         document.getElementById('player2-name').textContent = 'Computer';
         initGame('pvc');
         addControlListeners('pvc');
+        currentGameMode = 'pvc';
     };
 
     const playerVsPlayer =  () => {
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('player2-name').textContent = 'Player 2';
         initGame('pvp');
         addControlListeners('pvp');
+        currentGameMode = 'pvp';
     };
     
 
@@ -85,5 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
         gameOptionsBtn.classList.remove('visible-inline-block');
         header.classList.add('center-content');
         gameOptions.close();
-    })
+        currentGameMode = null;
+    });
+
+    restartGame.addEventListener("click", () => {
+        if (currentGameMode === 'pvc') {
+            playerVsComputer();
+        } else if (currentGameMode === 'pvp') {
+            playerVsPlayer();
+        }
+        gameOptions.close();
+    });
 });
