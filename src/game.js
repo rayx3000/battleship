@@ -42,7 +42,7 @@ function placeShipOnBoard(length, row, col, isVertical, shipId) {
         const allShipsPlaced = activePlayer.gameboard.getShips().length === SHIP_LENGTHS.length;
         if (allShipsPlaced) {
             if (gameMode === 'pvp') {
-                document.getElementById('start-game-btn').classList.remove('hidden');
+                document.getElementById('start-game-btn').disabled = false;
             }
         }
     }
@@ -196,6 +196,7 @@ const initGame = (mode) => {
         initManualPlacement();
         document.querySelector('.player2-board').classList.add('hidden');
         document.getElementById('start-game-btn').textContent = 'Next';
+        document.getElementById('start-game-btn').disabled = true;
         document.getElementById('player1-ships').textContent = '5';
         document.getElementById('player2-ships').textContent = '5';
     }
@@ -214,7 +215,6 @@ const addControlListeners = (mode) => {
     const randomizeBtn = document.getElementById('randomize-ships-btn');
     const startBtn = document.getElementById('start-game-btn');
     const playAgainBtn = document.getElementById('play-again-btn');
-    const rotateShipBtn = document.getElementById('rotate-ship-btn');
 
     const newRandomizeBtn = randomizeBtn.cloneNode(true);
     randomizeBtn.parentNode.replaceChild(newRandomizeBtn, randomizeBtn);
@@ -234,6 +234,9 @@ const addControlListeners = (mode) => {
             randomlyPlaceShips(player2.gameboard);
             renderBoard(player2.gameboard, 'player2-board', true);
         }
+        if (mode === 'pvp') {
+            document.getElementById('start-game-btn').disabled = false;
+        }
     });
 
     newStartBtn.addEventListener('click', () => {
@@ -250,7 +253,6 @@ const addControlListeners = (mode) => {
                 
                 newStartBtn.textContent = 'Continue';
                 newRandomizeBtn.classList.add('hidden');
-                rotateShipBtn.classList.add('hidden');
             } else if (placementTurn === 2) {
                 placementTurn = 3;
                 initManualPlacement();
@@ -261,8 +263,8 @@ const addControlListeners = (mode) => {
                 document.querySelector('.game-turn h3').classList.add('hidden');
                 
                 newStartBtn.textContent = 'Start Game';
+                newStartBtn.disabled = true;
                 newRandomizeBtn.classList.remove('hidden');
-                rotateShipBtn.classList.remove('hidden');
             } else {
                 startGame();
             }
@@ -279,17 +281,7 @@ const addControlListeners = (mode) => {
         initGame(mode);
     });
 
-    const newRotateShipBtn = rotateShipBtn.cloneNode(true);
-    rotateShipBtn.parentNode.replaceChild(newRotateShipBtn, rotateShipBtn);
 
-    newRotateShipBtn.addEventListener('click', () => {
-        const shipDock = document.querySelector('.ship-dock');
-        if (shipDock) {
-            shipDock.classList.toggle('vertical');
-            const ships = shipDock.querySelectorAll('.ship');
-            ships.forEach(ship => ship.classList.toggle('vertical'));
-        }
-    });
 };
 
 export { initGame, addControlListeners };

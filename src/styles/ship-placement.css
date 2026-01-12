@@ -18,8 +18,3 @@
 .ship.dragging {
     opacity: 0.5;
 }
-
-.ship.horizontal {
-    background: rgb(7, 131, 131);
-}
-

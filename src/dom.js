@@ -82,7 +82,7 @@ function addDragAndDropListeners(placeShipCallback) {
     ship.addEventListener('dragstart', (e) => {
       e.dataTransfer.setData('text/plain', JSON.stringify({
         length: ship.dataset.length,
-        isVertical: ship.classList.contains('vertical'),
+        isVertical: false,
         id: ship.id
       }));
       setTimeout(() => {
@@ -97,7 +97,9 @@ function addDragAndDropListeners(placeShipCallback) {
 
   boardCells.forEach(cell => {
     cell.addEventListener('dragover', (e) => {
-      e.preventDefault(); // Allow dropping
+      if (!cell.classList.contains('ship')) {
+        e.preventDefault(); // Allow dropping
+      }
     });
 
     cell.addEventListener('drop', (e) => {

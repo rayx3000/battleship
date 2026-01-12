@@ -25,7 +25,6 @@ const gameHTML = `
             <div class="board" id="player-board"></div>
         </div>
             <div class="game-turn">
-                <button id="rotate-ship-btn">Rotate</button>
                 <button id="randomize-ships-btn">Randomize Ships</button>
                 <button id="start-game-btn" class="hidden">Start Game</button>
                 <h3>Player's Turn</h3>
