@@ -32,6 +32,8 @@ main.placement-p2 {
 
 .player-tag > div:first-child > img{
     border-radius: 38%;
+    width: 80px;
+    height: 80px;
 }
 
 .player-tag > div:last-child > h3{
@@ -160,5 +162,63 @@ main.placement-p2 {
 
     .player-tag{
         width: 25vw;
+    }
+}
+
+@media(max-width: 948px){
+    .player-tag{
+        width: 28vw;
+    }
+
+    .player-tag > div:last-child > h3{
+        font-size: 1.28rem;
+    }
+
+    .player-tag > div:last-child  > p{
+        font-size: 1.05rem;
+    }
+
+    .player-tag > div:last-child > p > span:last-child{
+        font-size: 1.12rem;
+    }
+
+    .board-container{
+        gap: 3.8vw;
+    }
+
+    .player-tag > div:first-child > img{
+        width: 65px;
+        height: 65px;
+    }
+
+    .game-turn{
+        width: 15vw;
+    }
+
+    .pass-device{
+        width: 35vw;
+    }
+
+    .pass-device > button{
+        width: 10vw;
+    }
+
+    .game-turn h3{
+        font-size: 1.2rem;
+    }
+
+}
+
+@media(max-width: 800px) {
+    .board{
+        width: 450px;
+        height: 450px;
+    }
+}
+
+@media(max-width: 695px) {
+    .board-container{
+        flex-direction: column;
+        gap: 20px;
     }
 }

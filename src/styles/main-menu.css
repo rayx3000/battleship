@@ -46,3 +46,26 @@
     font-size: 1.5em;
     font-weight: bold;
 }
+
+@media(max-width: 695px){
+    .game-modes{
+        gap: 12vw;
+        margin-top: 10vh;
+    }
+
+    .game-modes > button{
+        width: 175px;
+        height: 175px;
+        padding: 2%;
+        gap: 8px;
+    }
+
+    .game-modes > button > span:first-child{
+        font-size: 2.8em;
+    }
+
+    .game-modes > button > span:last-child{
+        font-size: 1.3em;
+    }
+
+}

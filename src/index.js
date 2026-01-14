@@ -15,7 +15,7 @@ const gameHTML = `
     <div class="board-container player-board">
             <div class="player-tag">
                 <div class="player1-icon">
-                    <img width="80px" height="80px" src="${player1}">
+                    <img src="${player1}">
                 </div>
                 <div class="player1-details">
                     <h3 id="player1-name">Player</h3>
@@ -33,7 +33,7 @@ const gameHTML = `
             <div class="board-container player2-board">
                 <div class="player-tag">
                     <div class="player2-icon">
-                        <img width="80px" height="80px" src="${player2}">
+                        <img src="${player2}">
                     </div>
                     <div class="player2-details">
                         <h3 id="player2-name">Computer</h3>

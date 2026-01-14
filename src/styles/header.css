@@ -112,3 +112,9 @@ header > button:active{
 .center-content {
     justify-content: center !important;
 }
+
+@media(max-width: 695px) {
+    header h1{
+        font-size: 1.75rem;
+    }
+}
