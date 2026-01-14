@@ -121,3 +121,18 @@ main{
 .hidden {
     display: none;
 }
+
+.pass-device {
+    width: 25vw;
+    transition: width 0.5s ease;
+}
+
+@media(max-width: 1288px) {
+    main{
+        flex-direction: column;
+    }
+
+    .game-turn{
+        width: 15vw;
+    }
+}

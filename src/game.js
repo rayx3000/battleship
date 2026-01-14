@@ -257,9 +257,8 @@ const addControlListeners = (mode) => {
                 
                 const turnHeader = document.querySelector('.game-turn h3');
                 turnHeader.textContent = 'Pass the device to Player 2';
-                turnHeader.classList.add('pass-device');
                 turnHeader.classList.remove('hidden');
-                document.querySelector('.game-turn').style.width = "25vw";
+                document.querySelector('.game-turn').classList.add('pass-device')
                 
                 newStartBtn.textContent = 'Next';
                 newRandomizeBtn.classList.add('hidden');
@@ -270,7 +269,7 @@ const addControlListeners = (mode) => {
                 document.querySelector('.player2-board').classList.remove('hidden');
                 renderBoard(player2.gameboard, 'player2-board', true);
 
-                document.querySelector('.game-turn').style.width = "5vw";
+                document.querySelector('.game-turn').classList.remove('pass-device');
                 document.querySelector('.game-turn h3').classList.add('hidden');
                 
                 newStartBtn.textContent = 'Start Game';
