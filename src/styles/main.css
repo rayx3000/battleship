@@ -3,6 +3,11 @@ main{
     align-items: center;
     justify-content: center;
     gap: 3vw;
+    flex-direction: row;
+}
+
+main.placement-p2 {
+    flex-direction: row-reverse;
 }
 
 .board-container{
@@ -88,7 +93,7 @@ main{
     background: radial-gradient(circle, rgba(0, 124, 232, 0.75) 0%, rgba(46, 200, 217, 1) 100%);
     padding: 2%;
     border-radius: 32%;
-    width: 5vw;
+    width: 7.5vw;
     text-align: center;
 }
 
@@ -124,7 +129,15 @@ main{
 
 .pass-device {
     width: 25vw;
+    display: flex;
+    flex-direction: column-reverse;
     transition: width 0.5s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.pass-device > button{
+    width: 8vw;
 }
 
 @media(max-width: 1288px) {
@@ -132,7 +145,20 @@ main{
         flex-direction: column;
     }
 
+    main.placement-p2 {
+        flex-direction: column-reverse;
+    }
+
+    .board-container{
+        flex-direction: row;
+        gap: 8vw;
+    }
+
     .game-turn{
-        width: 15vw;
+        width: 12vw;
+    }
+
+    .player-tag{
+        width: 25vw;
     }
 }

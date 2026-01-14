@@ -271,12 +271,15 @@ const addControlListeners = (mode) => {
 
                 document.querySelector('.game-turn').classList.remove('pass-device');
                 document.querySelector('.game-turn h3').classList.add('hidden');
-                
+
+                document.querySelector('main').classList.add('placement-p2');
+
                 newStartBtn.textContent = 'Start Game';
                 newStartBtn.disabled = true;
                 newRandomizeBtn.classList.remove('hidden');
             } else {
                 startGame();
+                document.querySelector('main').classList.remove('placement-p2');
             }
         }
     });
