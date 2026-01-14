@@ -58,7 +58,7 @@ const addAttackListener = (callback, boardId) => {
         if (e.target.classList.contains('cell') && !e.target.classList.contains('hit') && !e.target.classList.contains('miss')) {
             const row = e.target.dataset.row;
             const col = e.target.dataset.col;
-            callback(row, col);
+            callback(row, col, boardId);
         }
     });
 };

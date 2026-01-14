@@ -101,7 +101,7 @@ const switchTurn = () => {
     }
 }
 
-const gameLoopPvp = (row, col) => {
+const gameLoopPvp = (row, col, boardId) => {
     if (gameOver) return;
 
     try {
@@ -110,6 +110,8 @@ const gameLoopPvp = (row, col) => {
 
         const opponent = (currentPlayer === player1) ? player2 : player1;
         const opponentBoardId = (currentPlayer === player1) ? 'player2-board' : 'player-board';
+
+        if (boardId !== opponentBoardId) return;
 
         currentPlayer.attack(opponent.gameboard, pRow, pCol);
         updateCell(opponent.gameboard, opponentBoardId, pRow, pCol);
@@ -125,8 +127,9 @@ const gameLoopPvp = (row, col) => {
     }
 }
 
-const gameLoopPvc = (row, col) => {
+const gameLoopPvc = (row, col, boardId) => {
     if (gameOver) return;
+    if (boardId !== 'player2-board') return;
 
     try {
         const pRow = parseInt(row);
@@ -254,9 +257,11 @@ const addControlListeners = (mode) => {
                 
                 const turnHeader = document.querySelector('.game-turn h3');
                 turnHeader.textContent = 'Pass the device to Player 2';
+                turnHeader.classList.add('pass-device');
                 turnHeader.classList.remove('hidden');
+                document.querySelector('.game-turn').style.width = "25vw";
                 
-                newStartBtn.textContent = 'Continue';
+                newStartBtn.textContent = 'Next';
                 newRandomizeBtn.classList.add('hidden');
             } else if (placementTurn === 2) {
                 placementTurn = 3;
@@ -265,6 +270,7 @@ const addControlListeners = (mode) => {
                 document.querySelector('.player2-board').classList.remove('hidden');
                 renderBoard(player2.gameboard, 'player2-board', true);
 
+                document.querySelector('.game-turn').style.width = "5vw";
                 document.querySelector('.game-turn h3').classList.add('hidden');
                 
                 newStartBtn.textContent = 'Start Game';
