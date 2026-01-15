@@ -4,6 +4,7 @@ main{
     justify-content: center;
     gap: 3vw;
     flex-direction: row;
+    padding-bottom: 2.5%;
 }
 
 main.placement-p2 {
@@ -217,8 +218,171 @@ main.placement-p2 {
 }
 
 @media(max-width: 695px) {
+    main{
+        gap: 35px;
+    }
+
     .board-container{
         flex-direction: column;
         gap: 20px;
+    }
+
+    .player-tag{
+        width: 35vw;
+    }
+
+    .game-turn{
+        width: 23.5vw;
+    }
+}
+
+@media(max-width: 575px){
+    .board{
+        width: 350px;
+        height: 350px;
+    }
+
+    .game-turn:not(.pass-device){
+        width: 32.5vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-turn > button{
+        padding: 5%;
+        width: 25vw;
+    }
+
+    .pass-device{
+        width: 55vw;
+    }
+
+    .pass-device > button{
+        width: 15vw;
+        padding: 5%;
+    }
+
+    .game-turn h3{
+        font-size: 1.05rem;
+    }
+
+    .player-tag{
+        width: 42vw;
+    }
+
+    .player-tag > div:last-child > h3{
+        font-size: 1.12rem;
+    }
+
+    .player-tag > div:last-child  > p{
+        font-size: 0.975rem;
+    }
+
+    .player-tag > div:last-child > p > span:last-child{
+        font-size: 1rem;
+    }
+
+    .player-tag > div:first-child > img{
+        width: 48px;
+        height: 48px;
+    }
+
+}
+
+@media (max-width: 405px) {
+    .board{
+        width: 300px;
+        height: 300px;
+    }
+    
+}
+
+@media(max-width: 350px) {
+    main{
+        padding: 3.75%;
+    }
+
+    .board{
+        width: 250px;
+        height: 250px;
+    }
+
+    .player-tag{
+        width: 62vw;
+        padding: 1.75%;
+    }
+
+    .game-turn:not(.pass-device){
+        width: 50vw;
+        padding: 2%;
+    }
+
+    .pass-device{
+        width: 70vw;
+    }
+
+    .game-turn > button{
+        padding: 5%;
+        width: 38vw;
+    }
+
+    .game-turn h3{
+        font-size: 1.05rem;
+    }
+
+    .player-tag > div:last-child > h3{
+        font-size: 1rem;
+    }
+
+    .player-tag > div:last-child  > p{
+        font-size: 0.9rem;
+    }
+
+    .player-tag > div:last-child > p > span:last-child{
+        font-size: 0.9rem;
+    }
+
+}
+
+@media(max-width: 295px) {
+    .board{
+        width: 200px;
+        height: 200px;
+    }
+
+    .player-tag{
+        width: 75vw;
+    }
+
+    .game-turn:not(.pass-device){
+        width: 63.5vw;
+        padding: 2%;
+    }
+
+    .pass-device{
+        width: 78vw;
+    }
+
+    .game-turn > button{
+        width: 53.5vw;
+        font-size: 0.78rem;
+    }
+
+    .game-turn h3{
+        font-size: 0.93rem;
+    }
+
+
+    .player-tag > div:last-child > h3{
+        font-size: 0.93rem;
+    }
+
+    .player-tag > div:last-child  > p{
+        font-size: 0.82rem;
+    }
+
+    .player-tag > div:last-child > p > span:last-child{
+        font-size: 0.78rem;
     }
 }
