@@ -80,15 +80,18 @@ main.placement-p2 {
 }
 
 .cell.ship {
-    background-color: #a9a9a9; /* DarkGray */
+    background: #3fbffb;
+    background: radial-gradient(circle, rgb(63, 191, 251) 0%, rgba(10, 134, 165, 0.88) 100%);
 }
 
 .cell.miss {
-    background-color: #808080; /* Gray */
+    background: #3f81fb;
+    background: radial-gradient(circle, rgb(63, 129, 251) 0%, rgb(70, 134, 252) 100%);
 }
 
 .cell.hit {
-    background-color: #ff0000; /* Red */
+    background: #ff8080;
+    background: radial-gradient(circle, rgb(255, 128, 128) 0%, hsla(2, 97%, 63%, 0.65) 100%);
 }
 
 .game-turn{

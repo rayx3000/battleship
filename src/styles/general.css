@@ -43,14 +43,14 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #87c5ff, #6bdcff, #5686e0);
+    background: linear-gradient(180deg, #25b1ca, #6bd5ff, #5686e0);
     box-shadow: 0 0 30px rgba(107, 201, 255, 0.8),
                 inset 0 0 10px rgba(255, 255, 255, 0.3);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:active {
-    background: linear-gradient(180deg, #a4dbff, #5a8eff, #6bc4ff);
+    background: linear-gradient(180deg, #77efff, #5a8eff, #6bc4ff);
     box-shadow: 0 0 40px rgb(107, 208, 255),
                 inset 0 0 15px rgba(255, 255, 255, 0.5);
 }
